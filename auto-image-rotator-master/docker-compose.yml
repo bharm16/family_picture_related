@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  app:
+    container_name: auto-image-rotator-app
+    image: auto-image-rotator-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: python rotate.py ${OVERWRITE_FILES:-0}
+    volumes:
+      - .:/app
+      - ${IMAGES_PATH:-${IMAGES_PATH:-/Users/bryceharmon/Library/CloudStorage/GoogleDrive-bharm257@gmail.com/My Drive/Family_Photos_25_Scans/Fujifilm}:/images}:/images

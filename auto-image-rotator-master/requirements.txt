@@ -1,0 +1,5 @@
+click
+dlib
+numpy
+opencv-python
+Pillow
