@@ -21,19 +21,30 @@ class Rotator:
         self.overwrite_files = overwrite_files
         logger.info(f"Rotator initialized. Overwrite files: {self.overwrite_files}")
 
+    def get_images(self):
+        """Scan the images directory and return a list of image file paths using the same logic as before."""
+        images = []
+        for root_dir, sub_dir, files in os.walk(self.IMAGES_DIRECTORY):
+            for file_name in files:
+                if file_name.lower().endswith(('.jpeg', '.jpg', '.png')):
+                    base_name, extension = os.path.splitext(file_name)
+                    if not base_name.endswith('_b'):
+                        file_path = os.path.join(root_dir, file_name)
+                        images.append(file_path)
+        return images
+
+    def populate_image_list(self, list_widget):
+        """Populate a given GUI list widget with image file paths."""
+        images = self.get_images()
+        list_widget.clear()
+        list_widget.addItems(images)
+
     def analyze_images(self):
         """
         Recursively loop through all files and subdirectories,
         looking for images to analyze and rotate.
         """
-        images = []
-        for root_dir, sub_dir, files in os.walk(self.IMAGES_DIRECTORY):
-            for file_name in files:
-                if file_name.lower().endswith((".jpeg", ".jpg", ".png")):
-                    base_name, extension = os.path.splitext(file_name)
-                    if not base_name.endswith("_b"):
-                        file_path = str(os.path.join(root_dir, file_name))
-                        images.append(file_path)
+        images = self.get_images()
 
         logger.info(f"Found {len(images)} image(s) in {self.IMAGES_DIRECTORY}.")
         rotations = {}
