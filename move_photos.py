@@ -29,5 +29,5 @@ def move_photos_ending_in_a(source_dir):
 
 if __name__ == "__main__":
     # Replace the directory path below with your own
-    directory = r"/Users/bryceharmon/Library/CloudStorage/GoogleDrive-bharm257@gmail.com/My Drive/Family_Photos_25_Scans copy"
+    directory = r"/Users/bryceharmon/Family_Photos_25_Scans_copy_ad"
     move_photos_ending_in_a(directory)

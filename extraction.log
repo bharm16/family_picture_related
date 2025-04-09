@@ -1,0 +1,3 @@
+2025-04-07 10:34:16,756 - INFO - Starting text extraction from PDFs in directory: path_to_your_ocred_pdfs
+2025-04-07 10:34:46,672 - INFO - Starting text extraction from PDFs in directory: /Users/bryceharmon/photo_pdfs
+2025-04-07 10:34:47,974 - INFO - Extraction complete! CSV saved as extracted_text.csv
